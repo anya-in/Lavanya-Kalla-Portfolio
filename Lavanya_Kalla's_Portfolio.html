@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lavanya Lahari Kalla – Data Scientist & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:       #f5f0e8;
+  --paper:    #faf7f2;
+  --surface:  #ede8df;
+  --green:    #1e3d2f;
+  --green2:   #2d5a42;
+  --green3:   #3d7a5a;
+  --gold:     #b8922a;
+  --text:     #1a1a18;
+  --muted:    #5a5a52;
+  --light:    #8a8a80;
+  --border:   rgba(30,61,47,.12);
+  --border2:  rgba(30,61,47,.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  /* subtle paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3.5rem;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--green);
+  letter-spacing: .02em;
+}
+.nav-links { display: flex; gap: 2.4rem; list-style: none; }
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--green); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 9rem 3.5rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-ornament {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-ornament-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(30,61,47,.06) 0%, transparent 70%);
+  top: -100px; right: -100px;
+}
+.hero-ornament-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(184,146,42,.06) 0%, transparent 70%);
+  bottom: 0; left: -50px;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--green3);
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: riseIn .6s .1s ease forwards;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 1.0;
+  color: var(--green);
+  letter-spacing: -.01em;
+  opacity: 0; animation: riseIn .7s .25s ease forwards;
+}
+.hero-name em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.hero-rule {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin: 2rem auto;
+  opacity: 0; animation: riseIn .5s .4s ease forwards;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: .01em;
+  margin-bottom: 1.2rem;
+  opacity: 0; animation: riseIn .7s .5s ease forwards;
+}
+
+.hero-sub {
+  font-size: .97rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  opacity: 0; animation: riseIn .7s .62s ease forwards;
+}
+
+.hero-ctas {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: riseIn .7s .72s ease forwards;
+}
+.btn {
+  padding: .85rem 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all .22s;
+}
+.btn-primary { background: var(--green); color: var(--bg); }
+.btn-primary:hover { background: var(--green2); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--green); border: 1px solid var(--green); }
+.btn-ghost:hover { background: rgba(30,61,47,.06); transform: translateY(-2px); }
+
+/* STATS */
+.hero-stats {
+  display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+  margin-top: 4rem;
+  opacity: 0; animation: riseIn .7s .85s ease forwards;
+}
+.stat {
+  text-align: center;
+  padding: 1.5rem 1.8rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-width: 120px;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  color: var(--green);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-top: .5rem;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 7rem 3.5rem; max-width: 1140px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--green3);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin-bottom: 3.5rem;
+  line-height: 1.15;
+  color: var(--green);
+}
+h2 em { font-style: italic; color: var(--gold); }
+
+.sep { border: none; border-top: 1px solid var(--border); margin: 0 3.5rem; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
+.about-prose p {
+  font-size: .97rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  font-weight: 300;
+}
+.about-prose p strong { color: var(--text); font-weight: 500; }
+.story-block {
+  padding: 1.4rem 1.6rem;
+  border-left: 2px solid var(--gold);
+  background: var(--paper);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 1rem;
+}
+.story-block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .5rem;
+}
+.story-block p { font-size: .88rem; color: var(--muted); line-height: 1.8; margin: 0; font-weight: 300; }
+.story-block p strong { color: var(--text); font-weight: 500; }
+
+.explore-panel h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+}
+.explore-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border2);
+}
+.explore-item:last-child { border-bottom: none; }
+.explore-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+  margin-top: .5rem;
+}
+.explore-item h4 { font-size: .9rem; font-weight: 600; margin-bottom: .2rem; color: var(--green); }
+.explore-item p { font-size: .8rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+/* ── EXPERIENCE ── */
+.exp-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: 219px; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.exp-meta { padding-top: .3rem; }
+.exp-sector {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--green3);
+  margin-bottom: .6rem;
+}
+.exp-company {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: .3rem;
+}
+.exp-years {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .66rem;
+  color: var(--light);
+  letter-spacing: .06em;
+}
+.exp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.exp-body p {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: .7rem;
+  font-weight: 300;
+}
+.exp-body p strong { color: var(--text); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .06em;
+  padding: .2rem .55rem;
+  border-radius: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* ── SKILLS ── */
+#skills { background: var(--green); max-width: 100%; padding: 7rem 3.5rem; }
+#skills .section-eyebrow { color: rgba(255,255,255,.5); }
+#skills .section-eyebrow::after { background: rgba(255,255,255,.12); }
+#skills h2 { color: var(--bg); }
+#skills h2 em { color: var(--gold); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  max-width: 1140px; margin: 0 auto;
+}
+.skill-card {
+  padding: 1.8rem;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 4px;
+  transition: background .2s, transform .2s;
+}
+.skill-card:hover { background: rgba(255,255,255,.09); transform: translateY(-3px); }
+.skill-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .8rem;
+}
+.skill-card ul { list-style: none; }
+.skill-card ul li {
+  font-size: .82rem;
+  color: rgba(245,240,232,.7);
+  padding: .35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-weight: 300;
+}
+.skill-card ul li:last-child { border-bottom: none; }
+
+/* ── PROJECTS ── */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+.project-card {
+  padding: 2rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative; overflow: hidden;
+  transition: transform .22s, box-shadow .22s;
+}
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  opacity: 0; transition: opacity .22s;
+}
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(30,61,47,.08); }
+.project-card:hover::after { opacity: 1; }
+.project-card.featured { grid-column: 1 / -1; }
+.proj-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--green3);
+  margin-bottom: .8rem;
+}
+.project-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: .8rem;
+  line-height: 1.2;
+}
+.project-card p {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.proj-metrics {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  margin: 1.2rem 0;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.proj-metric-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+}
+.proj-metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .55rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-top: .2rem;
+}
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.pillar {
+  padding: 1.1rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.pillar h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: .5rem;
+}
+.pillar p { font-size: .78rem; color: var(--muted); line-height: 1.65; margin: 0; font-weight: 300; }
+
+/* ── CERTS ── */
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+.cert-card {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color .2s;
+}
+.cert-card:hover { border-color: rgba(30,61,47,.3); }
+.cert-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green3); flex-shrink: 0;
+}
+.cert-card h4 { font-size: .92rem; font-weight: 600; color: var(--green); margin-bottom: .2rem; }
+.cert-card p { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--light); letter-spacing: .04em; }
+
+/* ── CONTACT ── */
+#contact { text-align: center; }
+.contact-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.contact-link {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .9rem 1.6rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--text);
+  transition: all .2s;
+}
+.contact-link:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+footer {
+  text-align: center;
+  padding: 2.5rem 3.5rem;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem;
+  color: var(--light);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 820px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+  .exp-item::before { display: none; }
+  #skills { padding: 5rem 1.5rem; }
+  .sep { margin: 0 1.5rem; }
+  .project-card.featured { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Lavanya Kalla</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%;padding-top:0;padding-bottom:0;">
+  <div class="hero-ornament hero-ornament-1"></div>
+  <div class="hero-ornament hero-ornament-2"></div>
+  <div style="position:relative;text-align:center;max-width:900px;">
+    <p class="hero-eyebrow">Data Science · AI Engineering · Graph Neural Networks · Cloud Analytics</p>
+    <h1 class="hero-name">Lavanya Lahari Kalla</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">Senior Data Solutions Architect &nbsp;·&nbsp; Spatio-Temporal AI Specialist &nbsp;·&nbsp; AWS Certified</p>
+    <p class="hero-sub">A decade of enterprise engineering discipline, now applied to the frontier of AI and machine learning. I architect resilient, end-to-end data solutions — from cloud pipelines to Graph Neural Networks — translating complexity into clarity and systems into strategic insight.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Industries</div></div>
+      <div class="stat"><div class="stat-num">$700M</div><div class="stat-label">Revenue Problem Solved</div></div>
+      <div class="stat"><div class="stat-num">3.8</div><div class="stat-label">M.S. GPA · Pace</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow">Who I Am</p>
+  <h2>A Decade of Reliability,<br/>Now Pursuing <em>the Frontier</em></h2>
+  <div class="about-grid">
+    <div class="about-prose">
+      <div class="story-block">
+        <div class="story-block-label">The Foundation — 2012 to 2023</div>
+        <p>My first ten years were defined by the <strong>"how" of software</strong>. At companies like TCS — building for global clients like Lloyds Bank — I focused on the critical infrastructure that keeps businesses running: systems support, rigorous testing, and front-end engineering with React.js. This era taught me that the most advanced technology is only as good as its stability. I learned to navigate complex enterprise environments and ensure that code was genuinely resilient and user-centric.</p>
+      </div>
+      <div class="story-block">
+        <div class="story-block-label">The Pivot — Searching for the "Why"</div>
+        <p>While my early career was spent ensuring systems worked, I found myself drawn to <strong>why they worked</strong> — and to modeling the most complex system of all: the human mind. This curiosity drove my transition into Data Science. My long-term vision is to bridge high-level AI engineering and <strong>neuroscience</strong>, building the foundation today that will allow me to contribute to neural pattern recognition and brain-computer interfacing tomorrow.</p>
+      </div>
+      <p style="margin-top:1rem;font-size:.92rem;">I am seeking roles that value a <strong>decade of professional maturity</strong> combined with a relentless drive to solve human-scale problems — where engineering discipline meets the ambition to push the boundaries of what AI can achieve.</p>
+    </div>
+    <div class="explore-panel">
+      <h3>Current Exploration</h3>
+      <div class="explore-item">
+        <div class="explore-dot"></div>
+        <div>
+          <h4>Intelligent Elastic Fare Modeling (FareFlex)</h4>
+          <p>Multi-objective optimization and spatial equity modeling for dynamic MTA transit pricing — addressing $700M in annual revenue loss through ST-GNN and Pareto-optimal fare calculation.</p>
+        </div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-dot"></div>
+        <div>
+          <h4>Graph Neural Networks for Cybersecurity</h4>
+          <p>ST-GNNs using PyTorch and DGL to model network conversations across time and detect advanced C2 threats that traditional static models cannot capture.</p>
+        </div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-dot"></div>
+        <div>
+          <h4>Multimodal AI Agent Benchmarking</h4>
+          <p>Evaluating LLM architectures via LMSYS Arena; monitoring NeurIPS and ICML to integrate cutting-edge advances into production workflows.</p>
+        </div>
+      </div>
+      <div class="explore-item">
+        <div class="explore-dot"></div>
+        <div>
+          <h4>Data Lakehouse Architectures</h4>
+          <p>Delta Lake, Apache Iceberg, and Airflow DAGs — building governed, incremental, production-grade platforms for the next generation of analytics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-eyebrow">Career</p>
+  <h2>Professional Experience</h2>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-sector">AI / Analytics</div>
+      <div class="exp-company">Springer Capital</div>
+      <div class="exp-years">2025 – Present · Chicago, US</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">AI Data Analyst</div>
+      <p>Delivered <strong>end-to-end analytics platform solutions</strong>, from raw data ingestion to governed datasets and operational reporting, using Python and automated pipelines across the full SDLC.</p>
+      <p>Engineered a <strong>Dockerized Python fraud detection engine</strong>, processing 300+ referral entries with custom fraud logic and UTC normalization across global timezones to ensure temporal data integrity.</p>
+      <p>Built <strong>HubSpot Deal Closure probability models</strong> using Logistic Regression and XGBoost, evaluated via ROC-AUC to drive measurable improvements in sales forecasting accuracy.</p>
+      <p>Performed <strong>Sentiment Analysis and Flight Risk forecasting</strong> using Random Forest models to surface organizational communication trends and proactively identify risks.</p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Docker</span><span class="tag">XGBoost</span>
+        <span class="tag">Scikit-learn</span><span class="tag">ROC-AUC</span><span class="tag">SQL</span>
+        <span class="tag">Pandas</span><span class="tag">HubSpot</span><span class="tag">UTC Normalization</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-sector">Software Engineering</div>
+      <div class="exp-company">Neptune InfoTech</div>
+      <div class="exp-years">2019 – 2023 · India</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Software Engineer</div>
+      <p>Designed and maintained <strong>scalable React.js component libraries</strong> powering high-traffic enterprise applications, achieving measurable reductions in load times through performance-first architecture, lazy loading, and code-splitting strategies.</p>
+      <p>Architected and delivered <strong>full-stack feature modules</strong> across complex multi-tier applications, collaborating with UX designers and backend engineers to build accessible, WCAG-compliant production interfaces.</p>
+      <p>Managed the complete <strong>promotion and release lifecycle</strong> across dev/test/prod environments — enforcing CI/CD best practices, automated testing pipelines, and branch protection rules for zero-downtime deployments.</p>
+      <p>Championed <strong>code quality and engineering standards</strong> through rigorous peer reviews, documentation, and knowledge transfer, improving team velocity and reducing regression rates across delivery cycles.</p>
+      <div class="tags">
+        <span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span>
+        <span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">Agile</span>
+        <span class="tag">Jira</span><span class="tag">Jest</span><span class="tag">REST APIs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-sector">Data Engineering</div>
+      <div class="exp-company">Sarag Systems</div>
+      <div class="exp-years">2014 – 2018 · India</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Senior Data Analyst</div>
+      <p>Designed and configured <strong>AWS cloud infrastructure</strong> (EC2, S3, RDS, VPC, IAM, Route53, CloudWatch, Auto Scaling) to support enterprise analytics workloads and platform migrations at scale.</p>
+      <p>Implemented <strong>Snowflake as the enterprise data warehouse</strong>, optimizing compute usage via multi-cluster warehouses; developed ETL pipelines using <strong>Python and Airflow DAGs</strong> automating ingestion from Redshift, FTP, and REST APIs.</p>
+      <p>Designed <strong>semantic data models and DAX measures</strong> in Power BI and Tableau to standardize business metrics and enable governed self-service analytics across executive and operational stakeholders.</p>
+      <p>Built <strong>Scala-based Spark applications</strong> for large-scale data cleansing, enrichment, and aggregation — processing hundreds of millions of records across distributed computing environments.</p>
+      <div class="tags">
+        <span class="tag">AWS</span><span class="tag">Snowflake</span><span class="tag">Airflow</span>
+        <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Scala</span>
+        <span class="tag">Spark</span><span class="tag">Redshift</span><span class="tag">Python</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item" style="border-bottom:none;">
+    <div class="exp-meta">
+      <div class="exp-sector">Financial Services</div>
+      <div class="exp-company">Tata Consultancy Services</div>
+      <div class="exp-years">2012 – 2013 · Chennai, India</div>
+    </div>
+    <div class="exp-body">
+      <div class="exp-title">Systems Engineer</div>
+      <p>Automated financial services via the <strong>Loan Module Portal for Lloyds Bank</strong>, streamlining database workflows and reducing manual intervention for critical global banking infrastructure.</p>
+      <p>Developed and optimized <strong>SQL queries and stored procedures</strong> to improve reporting performance and system reliability within a high-availability global financial environment.</p>
+      <div class="tags">
+        <span class="tag">SQL Server</span><span class="tag">.NET</span>
+        <span class="tag">Database Workflows</span><span class="tag">QA & Testing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--green);max-width:100%;padding:7rem 3.5rem;">
+  <div style="max-width:1140px;margin:0 auto;">
+    <p class="section-eyebrow">Expertise</p>
+    <h2>Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">Languages</div>
+        <ul>
+          <li>Python (Pandas, NumPy, PySpark)</li>
+          <li>SQL / Bash / Linux</li>
+          <li>JavaScript (React.js)</li>
+          <li>Scala</li>
+          <li>R</li>
+          <li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Cloud & DevOps</div>
+        <ul>
+          <li>AWS (EC2, S3, RDS, IAM, CloudWatch)</li>
+          <li>Snowflake / Redshift</li>
+          <li>Docker</li>
+          <li>Apache Airflow</li>
+          <li>Delta Lake / Iceberg</li>
+          <li>Git / Jira / CI-CD</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">AI & Machine Learning</div>
+        <ul>
+          <li>PyTorch / DGL</li>
+          <li>PyTorch Geometric (PyG)</li>
+          <li>Spatio-Temporal GNNs</li>
+          <li>XGBoost / Random Forest</li>
+          <li>Graph Data Science (Neo4j)</li>
+          <li>SciPy Multi-Objective Optimization</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Visualization & ETL</div>
+        <ul>
+          <li>Power BI (DAX, Semantic Models)</li>
+          <li>Tableau (Command Center, What-If)</li>
+          <li>GeoPandas · Spatial Analysis</li>
+          <li>Apache Spark / ETL-ELT</li>
+          <li>Matplotlib / Seaborn</li>
+          <li>Data Lakehouse Orchestration</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Databases</div>
+        <ul>
+          <li>PostgreSQL / MySQL</li>
+          <li>MongoDB</li>
+          <li>SQLite / SQL Server</li>
+          <li>Snowflake</li>
+          <li>Redshift</li>
+          <li>Neo4j Graph Database</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Research & Strategy</div>
+        <ul>
+          <li>Multi-Objective Optimization (Pareto)</li>
+          <li>Multimodal AI Benchmarking</li>
+          <li>LMSYS Arena Evaluation</li>
+          <li>NeurIPS / ICML Research</li>
+          <li>Sentiment & Risk Analysis</li>
+          <li>KPI Definition & Stakeholder Comms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-eyebrow">Case Studies</p>
+  <h2>Notable Projects</h2>
+  <div class="projects-grid">
+
+    <!-- FAREFLEX -->
+    <div class="project-card featured">
+      <div class="proj-eyebrow">🏆 Full-Stack Technical Lead · MTA Analytics Expo · March – April 2026</div>
+      <h3>Project FareFlex — Intelligent Elastic Fare System for the MTA</h3>
+      <p>Architected and deployed <strong>FareFlex</strong>, an end-to-end solution addressing the MTA's $700M annual revenue loss. The system replaces static flat-fares with an <strong>Intelligent Elastic Fare model</strong> that dynamically adjusts prices based on real-time infrastructure health and passenger density — simultaneously balancing revenue recovery, ridership equity, and infrastructure longevity.</p>
+      <div class="proj-metrics">
+        <div><div class="proj-metric-val">$700M</div><div class="proj-metric-label">Revenue Challenge</div></div>
+        <div><div class="proj-metric-val">472</div><div class="proj-metric-label">Station Graph Nodes</div></div>
+        <div><div class="proj-metric-val">2M+</div><div class="proj-metric-label">OMNY Rows Processed</div></div>
+        <div><div class="proj-metric-val">15%</div><div class="proj-metric-label">Fare Evasion Reduction</div></div>
+        <div><div class="proj-metric-val">20%</div><div class="proj-metric-label">Off-Peak Revenue Increase</div></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Data Engineering</h4>
+          <p>ETL pipeline ingesting 2M+ OMNY rows, GTFS-Realtime feeds, and MTA 20-Year Needs Assessment. Spatial joins via GeoPandas with US Census tracts to establish Social Equity pricing floors.</p>
+        </div>
+        <div class="pillar">
+          <h4>Data Science</h4>
+          <p>ST-GNN (PyTorch + DGL) modeling the 472-station network as a directed graph. SciPy multi-objective solver for Pareto-optimal fare per trip — steering traffic from "Marginal"-rated infrastructure.</p>
+        </div>
+        <div class="pillar">
+          <h4>Full-Stack & Product</h4>
+          <p>Dynamic Pricing API and high-fidelity Mobile UI/UX (Figma). Real-time Micro-Fare incentives and Intermodal Bridge free transfers during major service disruptions.</p>
+        </div>
+        <div class="pillar">
+          <h4>Business Intelligence</h4>
+          <p>Tableau Command Center for MTA stakeholders to simulate What-If scenarios — signal failures, weather surges, event peaks. Full executive quantification of projected business impact.</p>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">PyTorch</span><span class="tag">DGL</span><span class="tag">ST-GNN</span>
+        <span class="tag">GeoPandas</span><span class="tag">SciPy</span><span class="tag">GTFS-Realtime</span>
+        <span class="tag">Tableau</span><span class="tag">Figma</span><span class="tag">OMNY</span><span class="tag">US Census API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-eyebrow">Cybersecurity · Capstone</div>
+      <h3>Malicious C2 Detection via ST-GNN</h3>
+      <p>Developed a Spatio-Temporal Graph Neural Network using PyTorch Geometric to identify the behavioral fingerprint of network threats and C2 traffic patterns — modeling conversations across time to detect complex threats that traditional static security models fail to capture.</p>
+      <div class="tags">
+        <span class="tag">PyTorch Geometric</span><span class="tag">NetworkX</span>
+        <span class="tag">ST-GNN</span><span class="tag">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-eyebrow">Data Engineering · 2024</div>
+      <h3>Data Lakehouse Orchestration</h3>
+      <p>Architected Airflow DAGs to migrate ADLS CSV datasets to Delta Lake/Iceberg with incremental loading strategies. Integrated Great Expectations for automated quality audits, schema compliance, and continuous data validation.</p>
+      <div class="tags">
+        <span class="tag">Apache Airflow</span><span class="tag">Delta Lake</span>
+        <span class="tag">Iceberg</span><span class="tag">Great Expectations</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-eyebrow">AI Research · Glynac</div>
+      <h3>Multimodal AI Agent Benchmarking</h3>
+      <p>Benchmarked Multimodal AI Agents using LMSYS Arena and monitored NeurIPS and ICML to integrate state-of-the-art architectures into research and enterprise workflows, bridging academic innovation and production application.</p>
+      <div class="tags">
+        <span class="tag">Multimodal Agents</span><span class="tag">LMSYS Arena</span>
+        <span class="tag">Python</span><span class="tag">Research Integration</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-eyebrow">ML Pipeline · NASA Data</div>
+      <h3>Exoplanet Classification</h3>
+      <p>Built a machine learning pipeline using Random Forest to validate NASA's Kepler stellar objects and classify exoplanet archetypes — applying rigorous feature engineering and cross-validation to high-dimensional astronomical datasets.</p>
+      <div class="tags">
+        <span class="tag">Scikit-learn</span><span class="tag">Random Forest</span>
+        <span class="tag">Python</span><span class="tag">NASA Kepler Data</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-eyebrow">Fraud Detection · Springer Capital</div>
+      <h3>Referral Fraud Detection Engine</h3>
+      <p>Engineered a Dockerized Python engine to process 300+ referral entries with custom fraud logic, flagging and mitigating invalid rewards across distributed analytics platforms with real-time monitoring.</p>
+      <div class="tags">
+        <span class="tag">Docker</span><span class="tag">Python</span>
+        <span class="tag">Fraud Logic</span><span class="tag">Pandas</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-eyebrow">Credentials</p>
+  <h2>Certifications & Education</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>M.S. in Data Science — GPA 3.8</h4><p>Pace University, Seidenberg School of CSIS · Jan 2026</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>B.Tech – Electronics & Communication Engineering</h4><p>Focus: Robotics and Control Systems</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>AWS Certified ML Engineer – Associate (MLA-C01)</h4><p>Amazon Web Services · Machine Learning Specialization</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>AWS Cloud Practitioner</h4><p>Amazon Web Services · Foundational Cloud Certification</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>Neo4j Graph Data Science Certification</h4><p>Graph Algorithms & GDS Library</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>IoT Development</h4><p>Internet of Things Certification</p></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot"></div>
+      <div><h4>Managerial Economics</h4><p>EdX · Certified</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow">Let's Connect</p>
+  <h2>Get In Touch</h2>
+  <p class="contact-intro">Open to data science, AI/ML engineering, and research-driven roles — especially those at the intersection of applied AI and human-scale problems.</p>
+  <div class="contact-links">
+    <a href="mailto:lavanyaalaharikalla@gmail.com" class="contact-link"><span>✉</span> lavanyaalaharikalla@gmail.com</a>
+    <a href="tel:5513713839" class="contact-link"><span>☎</span> 551-371-3839</a>
+    <a href="https://www.linkedin.com/in/lavanya-kalla" target="_blank" class="contact-link"><span>◈</span> LinkedIn</a>
+    <a href="https://github.com/" target="_blank" class="contact-link"><span>◉</span> GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 &nbsp;·&nbsp; Lavanya Lahari Kalla &nbsp;·&nbsp; Data Scientist & AI Engineer &nbsp;·&nbsp; New York, USA</p>
+</footer>
+
+</body>
+</html>
